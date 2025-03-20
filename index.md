@@ -8,7 +8,7 @@ I am currently a Ph.D. student at Beijing Institute of Technology (BIT), where I
 
 My current research interests lie in the general area of natural language processing, particularly efficient language models and language agents. Prior to that, I was devoted to opinion mining and model generalization.
 
-I am on the <b><font color=red>job market 2024-2025</font></b> and actively seeking both academic and industrial positions. Drop me an email via chenzhang9702[AT]outlook[DOT]com if you are interested in collaborating with me.
+Drop me an email via chenzhang9702[AT]outlook[DOT]com if you are interested in collaborating with me.
 
 ## Recent Highlights
 
@@ -42,7 +42,7 @@ Dec. 27th, 2023. *MiniMA* and *MiniChat* are lifted to [*MiniMA-2*](https://hugg
 		<div class="direction-l">
 			<div class="flag-wrapper">
 				<span class="flag">Xiaohongshu NLP</span>
-				<span class="time-wrapper"><span class="time">Mar. 2023 - Present</span></span>
+				<span class="time-wrapper"><span class="time">Mar. 2023 - Mar. 2025</span></span>
 			</div>
 			<div class="desc">Algorithm Intern on Efficient Language Models</div>
 		</div>
