@@ -8,9 +8,11 @@ I am currently a Ph.D. student at Beijing Institute of Technology (BIT), where I
 
 My current research interests lie in the general area of natural language processing, particularly efficient language models and language agents. Prior to that, I was devoted to opinion mining and model generalization.
 
-Drop me an email via chenzhang9702[AT]outlook[DOT]com if you are interested in collaborating with me.
+Incoming AI researcher at Meituan. Drop me an email via chenzhang9702[AT]outlook[DOT]com if you are interested in collaborating with me.
 
 ## Recent Highlights
+
+Apr. 30th, 2025. Our team CUHKSZ-HUAWEI won the gold medal in [AIMO 2025](https://www.kaggle.com/competitions/ai-mathematical-olympiad-progress-prize-2/leaderboard).
 
 Sep. 5th, 2024. [*LongLLaVA*](https://huggingface.co/FreedomIntelligence/LongLLaVA) is released to become the first large multi-modal model that could maximally process over 1,000 images with only one Nvidia A100.
 
@@ -23,8 +25,6 @@ June 28th, 2024. One paper got accepted to TOIS.
 Feb. 19th, 2024. Two long papers got accepted to [COLING 2024](https://lrec-coling-2024.org/).
 
 Jan. 18th, 2024. One long paper got accepted to [EACL 2024](https://2024.eacl.org/).
-
-Dec. 27th, 2023. *MiniMA* and *MiniChat* are lifted to [*MiniMA-2*](https://huggingface.co/GeneZC/MiniMA-2-3B) and [*MiniChat-2*](https://huggingface.co/GeneZC/MiniChat-2-3B) respectively. *MiniMA-2* together with *MiniMA* and other arts completes the compute-performance frontier and *MiniChat-2* surpasses Vicuna-7B on MT-Bench.
 
 ## Experiences
 
