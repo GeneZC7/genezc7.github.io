@@ -12,7 +12,7 @@ My current research interests lie in the general area of natural language proces
 
 ## Recent Highlights
 
-Jul. 6th, 2025. One long paper got accepted to [ACM Multimedia 2025](https://acmmm2025.org/).
+July 6th, 2025. One long paper got accepted to [ACM Multimedia 2025](https://acmmm2025.org/).
 
 May 15th, 2025. One long paper got accepted to [ACL 2025](https://2025.aclweb.org/).
 
