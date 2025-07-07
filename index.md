@@ -4,13 +4,17 @@ layout: default
 
 ## About Me
 
-I am currently a Ph.D. student at Beijing Institute of Technology (BIT), where I am advised by [Prof. Dawei Song](http://cs.bit.edu.cn/szdw/jsml/js/sdw/index.htm). I collaborate closely with [Prof. Benyou Wang](https://wabyking.github.io/old) from CUHK-SZ on efficient language models and [Prof. Qiuchi Li](https://qiuchili.github.io) from UCPH on structural bias. I previously worked closely with [Dr. Jingang Wang](https://sites.google.com/site/bitwjg/) from Meituan NLP and [Dr. Qifan Wang](https://wqfcr.github.io/) from Meta AI on large language models. I also enjoyed building structure-grounded language models with [Binyuan Hui](https://huybery.github.io/) from Alibaba.
+I am an AI researcher at Meituan. Prior to that, I obtained my Ph.D. degree at Beijing Institute of Technology (BIT), where I was advised by [Prof. Dawei Song](http://cs.bit.edu.cn/szdw/jsml/js/sdw/index.htm). I collaborated closely with [Prof. Benyou Wang](https://wabyking.github.io/old) from CUHK-SZ on efficient language models and [Prof. Qiuchi Li](https://qiuchili.github.io) from UCPH on structural bias. I previously worked closely with [Dr. Jingang Wang](https://sites.google.com/site/bitwjg/) from Meituan NLP and [Dr. Qifan Wang](https://wqfcr.github.io/) from Meta AI on large language models. I also enjoyed building structure-grounded language models with [Binyuan Hui](https://huybery.github.io/) from Alibaba.
 
-My current research interests lie in the general area of natural language processing, particularly efficient language models and language agents. Prior to that, I was devoted to opinion mining and model generalization.
+My current research interests lie in the general area of natural language processing, particularly efficient language models and language agents. Previously, I was devoted to opinion mining and model generalization.
 
-Incoming AI researcher at Meituan. Drop me an email via chenzhang9702[AT]outlook[DOT]com if you are interested in collaborating with me.
+*I am currently looking for highly self-motivated research interns who are interested in long-context language models or anything related to efficient language models*. Drop me an email via chenzhang9702[AT]outlook[DOT]com if you are interested in collaborating with me.
 
 ## Recent Highlights
+
+Jul. 6th, 2025. One long paper got accepted to [ACM Multimedia](https://acmmm2025.org/).
+
+May 15th, 2025. One long paper got accepted to [ACL 2025](https://2025.aclweb.org/).
 
 Apr. 30th, 2025. Our team CUHKSZ-HUAWEI won the gold medal in [AIMO 2025](https://www.kaggle.com/competitions/ai-mathematical-olympiad-progress-prize-2/leaderboard).
 
@@ -22,18 +26,23 @@ July 9th, 2024. *MiniMA* family is now completed with released MoE model [*MiniM
 
 June 28th, 2024. One paper got accepted to TOIS.
 
-Feb. 19th, 2024. Two long papers got accepted to [COLING 2024](https://lrec-coling-2024.org/).
-
-Jan. 18th, 2024. One long paper got accepted to [EACL 2024](https://2024.eacl.org/).
-
 ## Experiences
 
 <ul class="timeline">
 	<li>
+		<div class="direction-l">
+			<div class="flag-wrapper">
+				<span class="flag">Meituan M17</span>
+				<span class="time-wrapper"><span class="time">Jul. 2025 - Present</span></span>
+			</div>
+			<div class="desc">Researcher on Efficient Language Models</div>
+		</div>
+	</li>
+	<li>
 		<div class="direction-r">
 			<div class="flag-wrapper">
 				<span class="flag">BIT</span>
-				<span class="time-wrapper"><span class="time">Sep. 2019 - Present</span></span>
+				<span class="time-wrapper"><span class="time">Sep. 2019 - Jul. 2025</span></span>
 			</div>
 			<div class="desc">Dual M.Eng.-Ph.D. in Computer Science</div>
 		</div>
@@ -125,6 +134,14 @@ A large language model that reaches top-level performance on CLUE benchmark. <br
 **Chen Zhang**, Meizhi Zhong, Qimeng Wang, Xuantao Lu, Zheyu Ye, Chengqiang Lu, Yan Gao, Yao Hu, Kehai Chen, Min Zhang, and Dawei Song. <br>
 Preprint. [[arXiv]](https://arxiv.org/abs/2410.14268)
 
+**ZigZagKV: Dynamic KV Cache Compression for Long-context Modeling based on Layer Uncertainty** <br>
+Meizhi Zhong, Xikai Liu, **Chen Zhang**, Yikun Lei, Yan Gao, Yao Hu, Kehai Chen, and Min Zhang. <br>
+In **COLING 2025**.
+
+**Understanding the RoPE Extensions of Long-context LLMs: An Attention Perspective** <br>
+Meizhi Zhong, **Chen Zhang**, Yikun Lei, Xikai Liu, Yan Gao, Yao Hu, Kehai Chen, and Min Zhang. <br>
+In **COLING 2025**.
+
 **LongLLaVA: Scaling Multi-modal LLMs to 1,000 Images Efficiently via Hybrid Architecture** <br>
 Xidong Wang, Dingjie Song, Shunian Chen, **Chen Zhang** and Benyou Wang. <br>
 Preprint. [[arXiv]](https://arxiv.org/abs/2409.02889)[[code]](https://github.com/FreedomIntelligence/LongLLaVA)
@@ -134,8 +151,8 @@ Preprint. [[arXiv]](https://arxiv.org/abs/2409.02889)[[code]](https://github.com
 Preprint. [[arXiv]](https://arxiv.org/abs/2404.14897)
 
 **Towards the Law of Capacity Gap in Distilling Language Models.** <br>
-**Chen Zhang**, Dawei Song, Zheyu Ye, and Yan Gao. <br>
-Preprint. [[arXiv]](https://arxiv.org/abs/2311.07052)[[code]](https://github.com/GeneZC/MiniMA)
+**Chen Zhang**, Qiuchi Li, Dawei Song, Zheyu Ye, Yan Gao, and Yao Hu. <br>
+In **ACL 2025**. [[arXiv]](https://arxiv.org/abs/2311.07052)[[code]](https://github.com/GeneZC/MiniMA)
 
 **How Speculative Can Speculative Decoding Be?** <br>
 Zhuorui Liu, **Chen Zhang**, and Dawei Song. <br>
