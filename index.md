@@ -12,9 +12,11 @@ My current research interests lie in the general area of natural language proces
 
 ## Recent Highlights
 
-Jul. 6th, 2025. One long paper got accepted to [ACM Multimedia](https://acmmm2025.org/).
+Jul. 6th, 2025. One long paper got accepted to [ACM Multimedia 2025](https://acmmm2025.org/).
 
 May 15th, 2025. One long paper got accepted to [ACL 2025](https://2025.aclweb.org/).
+
+Jan. 22nd, 2025. One long paper got accepted to [NAACL 2025](https://2025.naacl.org/).
 
 Apr. 30th, 2025. Our team CUHKSZ-HUAWEI won the gold medal in [AIMO 2025](https://www.kaggle.com/competitions/ai-mathematical-olympiad-progress-prize-2/leaderboard).
 
@@ -24,7 +26,6 @@ July 25th, Aug. 8th, 2024. Invited to give talks respectively on [long-context e
 
 July 9th, 2024. *MiniMA* family is now completed with released MoE model [*MiniMix*](https://huggingface.co/GeneZC/MiniMix-2_4x3B) and long-context model [*MiniLoong*](https://huggingface.co/GeneZC/MiniLoong-3B).
 
-June 28th, 2024. One paper got accepted to TOIS.
 
 ## Experiences
 
@@ -132,7 +133,7 @@ A large language model that reaches top-level performance on CLUE benchmark. <br
 
 **MoDification: Mixture of Depths Made Easy** <br>
 **Chen Zhang**, Meizhi Zhong, Qimeng Wang, Xuantao Lu, Zheyu Ye, Chengqiang Lu, Yan Gao, Yao Hu, Kehai Chen, Min Zhang, and Dawei Song. <br>
-Preprint. [[arXiv]](https://arxiv.org/abs/2410.14268)
+In **NAACL 2025**. [[arXiv]](https://arxiv.org/abs/2410.14268)
 
 **ZigZagKV: Dynamic KV Cache Compression for Long-context Modeling based on Layer Uncertainty** <br>
 Meizhi Zhong, Xikai Liu, **Chen Zhang**, Yikun Lei, Yan Gao, Yao Hu, Kehai Chen, and Min Zhang. <br>
