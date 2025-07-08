@@ -4,15 +4,15 @@ layout: default
 
 ## About Me
 
-I am an AI researcher at Meituan. Prior to that, I obtained my Ph.D. degree at Beijing Institute of Technology (BIT), where I was advised by [Prof. Dawei Song](http://cs.bit.edu.cn/szdw/jsml/js/sdw/index.htm). I collaborated closely with [Prof. Benyou Wang](https://wabyking.github.io/old) from CUHK-SZ on efficient language models and [Prof. Qiuchi Li](https://qiuchili.github.io) from UCPH on structural bias. I previously worked closely with [Dr. Jingang Wang](https://sites.google.com/site/bitwjg/) from Meituan NLP and [Dr. Qifan Wang](https://wqfcr.github.io/) from Meta AI on large language models. I also enjoyed building structure-grounded language models with [Binyuan Hui](https://huybery.github.io/) from Alibaba.
+I am currently an AI researcher at Meituan M17. Prior to that, I obtained my Ph.D. degree at Beijing Institute of Technology (BIT), where I was advised by [Prof. Dawei Song](http://cs.bit.edu.cn/szdw/jsml/js/sdw/index.htm). I collaborated closely with [Prof. Benyou Wang](https://wabyking.github.io/old) from CUHK-SZ on efficient language models and [Prof. Qiuchi Li](https://qiuchili.github.io) from UCPH on structural bias. I previously worked closely with [Dr. Jingang Wang](https://sites.google.com/site/bitwjg/) from Meituan NLP and [Dr. Qifan Wang](https://wqfcr.github.io/) from Meta AI on large language models. I also enjoyed building structure-grounded language models with [Binyuan Hui](https://huybery.github.io/) from Alibaba.
 
 My current research interests lie in the general area of natural language processing, particularly efficient language models and language agents. Previously, I was devoted to opinion mining and model generalization.
 
-*I am currently looking for highly self-motivated research interns who are interested in long-context language models or anything related to efficient language models*. Drop me an email via chenzhang9702[AT]outlook[DOT]com if you are interested in collaborating with me.
+*I am actively looking for self-motivated research interns who are interested in long-context language models or anything related to efficient language models*. Drop me an email via chenzhang9702[AT]outlook[DOT]com if you are interested in collaborating with me.
 
 ## Recent Highlights
 
-July 6th, 2025. One long paper got accepted to [ACM Multimedia 2025](https://acmmm2025.org/).
+July 6th, 2025. One long paper got accepted to [ACM MM 2025](https://acmmm2025.org/).
 
 May 15th, 2025. One long paper got accepted to [ACL 2025](https://2025.aclweb.org/).
 
@@ -137,11 +137,11 @@ In **NAACL 2025**. [[arXiv]](https://arxiv.org/abs/2410.14268)
 
 **ZigZagKV: Dynamic KV Cache Compression for Long-context Modeling based on Layer Uncertainty** <br>
 Meizhi Zhong, Xikai Liu, **Chen Zhang**, Yikun Lei, Yan Gao, Yao Hu, Kehai Chen, and Min Zhang. <br>
-In **COLING 2025**.
+In **COLING 2025**. [[arXiv]](https://arxiv.org/abs/2412.09036)
 
 **Understanding the RoPE Extensions of Long-context LLMs: An Attention Perspective** <br>
 Meizhi Zhong, **Chen Zhang**, Yikun Lei, Xikai Liu, Yan Gao, Yao Hu, Kehai Chen, and Min Zhang. <br>
-In **COLING 2025**.
+In **COLING 2025**. [[arXiv]](https://arxiv.org/abs/2406.13282)
 
 **LongLLaVA: Scaling Multi-modal LLMs to 1,000 Images Efficiently via Hybrid Architecture** <br>
 Xidong Wang, Dingjie Song, Shunian Chen, **Chen Zhang** and Benyou Wang. <br>
