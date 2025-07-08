@@ -34,7 +34,7 @@ July 9th, 2024. *MiniMA* family is now completed with released MoE model [*MiniM
 		<div class="direction-l">
 			<div class="flag-wrapper">
 				<span class="flag">Meituan M17</span>
-				<span class="time-wrapper"><span class="time">Jul. 2025 - Present</span></span>
+				<span class="time-wrapper"><span class="time">July 2025 - Present</span></span>
 			</div>
 			<div class="desc">Researcher on Efficient Language Models</div>
 		</div>
@@ -43,7 +43,7 @@ July 9th, 2024. *MiniMA* family is now completed with released MoE model [*MiniM
 		<div class="direction-r">
 			<div class="flag-wrapper">
 				<span class="flag">BIT</span>
-				<span class="time-wrapper"><span class="time">Sep. 2019 - Jul. 2025</span></span>
+				<span class="time-wrapper"><span class="time">Sep. 2019 - July 2025</span></span>
 			</div>
 			<div class="desc">Dual M.Eng.-Ph.D. in Computer Science</div>
 		</div>
