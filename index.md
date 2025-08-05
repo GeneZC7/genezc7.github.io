@@ -12,6 +12,8 @@ My current research interests lie in the general area of natural language proces
 
 ## Recent Highlights
 
+July 30th, 2025. Our paper "Towards the Law of Capacity Gap in Distilling Language Models" got [ACL 2025 Outstandaing Paper Award](https://2025.aclweb.org/program/awards). 
+
 July 6th, 2025. One long paper got accepted to [ACM MM 2025](https://acmmm2025.org/).
 
 May 15th, 2025. One long paper got accepted to [ACL 2025](https://2025.aclweb.org/).
@@ -23,8 +25,6 @@ Apr. 30th, 2025. Our team CUHKSZ-HUAWEI won the gold medal in [AIMO 2025](https:
 Sep. 5th, 2024. [*LongLLaVA*](https://huggingface.co/FreedomIntelligence/LongLLaVA) is released to become the first large multi-modal model that could maximally process over 1,000 images with only one Nvidia A100.
 
 July 25th, Aug. 8th, 2024. Invited to give talks respectively on [long-context efficiency](./assets/files/Li_Auto_Long_context_Efficiency.pdf) at Li Auto and [democratization of LLMs](./assets/files/ByteDance_Research_Democratization_LLMs.pdf) at ByteDance Research.
-
-July 9th, 2024. *MiniMA* family is now completed with released MoE model [*MiniMix*](https://huggingface.co/GeneZC/MiniMix-2_4x3B) and long-context model [*MiniLoong*](https://huggingface.co/GeneZC/MiniLoong-3B).
 
 
 ## Experiences
@@ -153,7 +153,7 @@ Preprint. [[arXiv]](https://arxiv.org/abs/2404.14897)
 
 **Towards the Law of Capacity Gap in Distilling Language Models.** <br>
 **Chen Zhang**, Qiuchi Li, Dawei Song, Zheyu Ye, Yan Gao, and Yao Hu. <br>
-In **ACL 2025**. [[arXiv]](https://arxiv.org/abs/2311.07052)[[code]](https://github.com/GeneZC/MiniMA)
+In **ACL 2025, Outstanding Paper Award**. [[arXiv]](https://arxiv.org/abs/2311.07052)[[code]](https://github.com/GeneZC/MiniMA)
 
 **How Speculative Can Speculative Decoding Be?** <br>
 Zhuorui Liu, **Chen Zhang**, and Dawei Song. <br>
@@ -262,6 +262,8 @@ Secondary Reviewer: WSDM, ICTIR, TOIS.
 Volunteer: EMNLP.
 
 ## Honors & Awards
+
+**Outstanding Paper Award** at ACL. 2025.
 
 **Best Paper Award** at NLPCC. 2022.
 
