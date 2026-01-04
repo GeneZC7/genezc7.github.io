@@ -131,6 +131,10 @@ A large language model that reaches top-level performance on CLUE benchmark. <br
 
 ### Efficient Language Models
 
+**Efficient Context Scaling with LongCat ZigZag Attention** <br>
+**Chen Zhang**, Yang Bai, Jiahuan Li, Anchun Gui, Keheng Wang, Feifan Liu, Guanyu Wu, Yuwei Jiang, Defei Bu, Li Wei, Haihang Jing, Hongyin Tang, Xin Chen, Xiangzhou Huang, Fengcun Li, Rongxiang Weng, Yulei Qian, Yifan Lu, Yerui Sun, Jingang Wang, Yuchen Xie, and Xunliang Cai. <br>
+**Report**. [[arXiv]](https://arxiv.org/abs/2512.23966)
+
 **MoDification: Mixture of Depths Made Easy** <br>
 **Chen Zhang**, Meizhi Zhong, Qimeng Wang, Xuantao Lu, Zheyu Ye, Chengqiang Lu, Yan Gao, Yao Hu, Kehai Chen, Min Zhang, and Dawei Song. <br>
 In **NAACL 2025**. [[arXiv]](https://arxiv.org/abs/2410.14268)
