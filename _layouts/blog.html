@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>{{ page.title }} | Chen Zhang's Homepage</title>
+    <link rel="short icon" href="{{site.favicon | relative_url}}">
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
+
+        {% if page.header_image %}
+          <img src="{{ page.header_image | relative_url }}" alt="{{ page.title }}" style="max-width:100%; border-radius:6px;" />
+        {% endif %}
+
+        <p>{{ site.description }}</p>
+
+      </header>
+      <section>
+
+      <p><a href="{{ "/" | absolute_url }}">&larr; Back to Home</a></p>
+
+      <h1>{{ page.title }}</h1>
+      <p><small>{{ page.date | date: "%B %Y" }}</small></p>
+
+      {{ content }}
+
+      </section>
+      <footer>
+        <p><small>Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+  </body>
+</html>

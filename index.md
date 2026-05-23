@@ -27,6 +27,12 @@ Sep. 5th, 2024. [*LongLLaVA*](https://huggingface.co/FreedomIntelligence/LongLLa
 July 25th, Aug. 8th, 2024. Invited to give talks respectively on [long-context efficiency](./assets/files/Li_Auto_Long_context_Efficiency.pdf) at Li Auto and [democratization of LLMs](./assets/files/ByteDance_Research_Democratization_LLMs.pdf) at ByteDance Research.
 
 
+## Blog
+
+**[The Ultra-Long Context Paradox](./blog/ultra-long-context-paradox.html)** <br>
+An opinion piece on why we need 1M+ context — not despite its problems, but because of them. <br>
+May 2026.
+
 ## Experiences
 
 <ul class="timeline">
