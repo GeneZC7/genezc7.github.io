@@ -29,6 +29,10 @@ July 25th, Aug. 8th, 2024. Invited to give talks respectively on [long-context e
 
 ## Blog
 
+**[The Sparse Attention Landscape](./blog/sparse-attention-landscape.html)** <br>
+A survey of how sparse attention evolved — from KV cache compression to sparse compute to native architectural sparsity — and why the field is circling back. <br>
+June 2026.
+
 **[The Ultra-Long Context Paradox](./blog/ultra-long-context-paradox.html)** <br>
 An opinion piece on why we need 1M+ context — not despite its problems, but because of them. <br>
 May 2026.
