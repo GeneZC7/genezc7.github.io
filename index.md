@@ -12,6 +12,8 @@ My current research interests lie in the general area of natural language proces
 
 ## Recent Highlights
 
+Dec. 30th, 2025. Our report concerned with sparse attention in LongCat is released on [arXiv](https://arxiv.org/abs/2512.23966).
+
 July 30th, 2025. Our paper "Towards the Law of Capacity Gap in Distilling Language Models" got [ACL 2025 Outstandaing Paper Award](https://2025.aclweb.org/program/awards). 
 
 July 6th, 2025. One long paper got accepted to [ACM MM 2025](https://acmmm2025.org/).
@@ -23,9 +25,6 @@ Jan. 22nd, 2025. One long paper got accepted to [NAACL 2025](https://2025.naacl.
 Apr. 30th, 2025. Our team CUHKSZ-HUAWEI won the gold medal in [AIMO 2025](https://www.kaggle.com/competitions/ai-mathematical-olympiad-progress-prize-2/leaderboard).
 
 Sep. 5th, 2024. [*LongLLaVA*](https://huggingface.co/FreedomIntelligence/LongLLaVA) is released to become the first large multi-modal model that could maximally process over 1,000 images with only one Nvidia A100.
-
-July 25th, Aug. 8th, 2024. Invited to give talks respectively on [long-context efficiency](./assets/files/Li_Auto_Long_context_Efficiency.pdf) at Li Auto and [democratization of LLMs](./assets/files/ByteDance_Research_Democratization_LLMs.pdf) at ByteDance Research.
-
 
 ## Blog
 
