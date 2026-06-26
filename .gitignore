@@ -2,3 +2,7 @@ _site/
 .jekyll-cache/
 .sass-cache/
 Gemfile.lock
+
+# Python figure-generation artifacts
+__pycache__/
+*.pyc

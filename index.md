@@ -12,9 +12,9 @@ My current research interests lie in the general area of natural language proces
 
 ## Recent Highlights
 
-Dec. 30th, 2025. Our report concerned with sparse attention in LongCat is released on [arXiv](https://arxiv.org/abs/2512.23966).
+Dec. 30th, 2025. Our report concerned with efficient attention in LongCat was released on [arXiv](https://arxiv.org/abs/2512.23966).
 
-July 30th, 2025. Our paper "Towards the Law of Capacity Gap in Distilling Language Models" got [ACL 2025 Outstandaing Paper Award](https://2025.aclweb.org/program/awards). 
+July 30th, 2025. Our paper "Towards the Law of Capacity Gap in Distilling Language Models" got [ACL 2025 Outstanding Paper Award](https://2025.aclweb.org/program/awards). 
 
 July 6th, 2025. One long paper got accepted to [ACM MM 2025](https://acmmm2025.org/).
 
@@ -27,6 +27,10 @@ Apr. 30th, 2025. Our team CUHKSZ-HUAWEI won the gold medal in [AIMO 2025](https:
 Sep. 5th, 2024. [*LongLLaVA*](https://huggingface.co/FreedomIntelligence/LongLLaVA) is released to become the first large multi-modal model that could maximally process over 1,000 images with only one Nvidia A100.
 
 ## Blog
+
+**[Long Context From Scratch](./blog/long-context-from-scratch.html)** <br>
+A practitioner's guide to the four ingredients — stages, data, extrapolation, and parallelism — that turn a short-context base model into a long-context one. <br>
+July 2026.
 
 **[The Sparse Attention Landscape](./blog/sparse-attention-landscape.html)** <br>
 A survey of how sparse attention evolved — from KV cache compression to sparse compute to native architectural sparsity — and why the field is circling back. <br>
