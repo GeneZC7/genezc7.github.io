@@ -229,10 +229,13 @@ def fig4_rope_mechanics():
 
     w_hi = 2.6             # high-frequency angular rate
     w_lo = 0.42           # low-frequency angular rate
-    w_abf = 0.27          # low frequency after raising the base (ABF)
+    w_abf = 0.27          # low frequency after raising the base (ABF / YaRN)
+    w_hi_pi = 1.5         # high freq if uniformly scaled by PI (period stretched)
 
     # high-frequency pair: many cycles within the trained window (local)
     hi = np.cos(pos * w_hi)
+    # high-frequency under uniform PI scaling: period needlessly stretched (bad)
+    hi_pi = np.cos(pos * w_hi_pi)
     # low-frequency pair: barely a fraction of a turn across the sequence (global)
     lo = np.cos(pos * w_lo)
     # low-frequency after raising the base (ABF): even slower
@@ -248,23 +251,40 @@ def fig4_rope_mechanics():
                      color=C_BLUE, alpha=0.15, zorder=1)
     axL.annotate("", xy=(p_hi, hi_off - 1.25), xytext=(0, hi_off - 1.25),
                  arrowprops=dict(arrowstyle="<->", color=C_BLUE, lw=1.2))
-    axL.text(p_hi / 2, hi_off - 1.65, "1 period (short)", ha="center",
+    axL.text(p_hi / 2, hi_off - 1.75, "1 period (short)", ha="center",
              fontsize=7, color=C_BLUE)
     # low-freq: one period runs off the chart, so shade what's visible
     axL.fill_between(pos, lo_off - 1.0, lo + lo_off,
                      color=C_ORANGE, alpha=0.12, zorder=1)
     axL.annotate("", xy=(12, lo_off - 1.25), xytext=(0, lo_off - 1.25),
                  arrowprops=dict(arrowstyle="->", color=C_ORANGE, lw=1.2))
-    axL.text(6.0, lo_off - 1.65,
+    axL.text(6.0, lo_off - 1.6,
              f"1 period ~ {p_lo:.0f} (longer than the sequence)", ha="center",
              fontsize=7, color=C_ORANGE)
 
+    # high-freq band: original (kept by YaRN) vs PI's harmful uniform stretch
     axL.plot(pos, hi + hi_off, color=C_BLUE, linewidth=1.6,
-             label="high freq -> local offsets")
+             label="high freq (local)")
+    axL.plot(pos, hi_pi + hi_off, color=C_BLUE, linewidth=1.2, linestyle=(0, (1, 1)),
+             alpha=0.55, label="same, if PI-scaled (detail lost)")
+    # low-freq band: original vs stretched (ABF / YaRN target)
     axL.plot(pos, lo + lo_off, color=C_ORANGE, linewidth=1.8,
-             label="low freq -> long-range position")
+             label="low freq (global)")
     axL.plot(pos, lo_abf + lo_off, color=C_GREEN, linewidth=1.8, linestyle="--",
-             label="low freq after ABF (slower)")
+             label="low freq stretched (ABF / YaRN)")
+
+    # dedicated legend strip at bottom center, horizontal, white background
+    leg = axL.legend(loc="upper center", fontsize=6.3, frameon=True,
+                     framealpha=0.92, facecolor="white", edgecolor="#DDDDDD",
+                     borderpad=0.5, labelspacing=0.3, columnspacing=1.1,
+                     ncols=2, bbox_to_anchor=(0.5, -0.16))
+    leg.set_zorder(20)
+
+    # per-band YaRN action tags, parked in clear space beside each wave
+    axL.text(2.55, hi_off + 1.45, "YaRN: keep the fast pair", ha="left", fontsize=7.5,
+             color=C_BLUE, fontweight="bold")
+    axL.text(3.4, lo_off + 0.95, "YaRN: stretch the slow pair", ha="left", fontsize=7.5,
+             color=C_GREEN, fontweight="bold")
 
     # trained-length boundary + unseen region
     axL.axvspan(trained, 12, color="#F5F5F5", zorder=0)
@@ -279,8 +299,7 @@ def fig4_rope_mechanics():
     axL.set_yticks([])
     axL.set_xlabel("token position", fontsize=9.5)
     axL.spines["left"].set_visible(False)
-    axL.legend(loc="lower right", fontsize=7.5, frameon=False, ncols=1)
-    axL.set_title("Each dimension pair rotates at its own rate",
+    axL.set_title("YaRN stretches the slow period, keeps the fast one",
                   fontsize=10.5, fontweight="bold")
 
     # -- Right: ABF maps the same distance to a smaller angle --
