@@ -185,17 +185,18 @@ def fig3_data_composition():
 def fig2_staged_extension():
     fig, ax = plt.subplots(figsize=(10, 5.5))
 
-    # Step charts: context length vs stage index for three schedules
+    # Line charts: context length vs stage index for three schedules
     schedules = [
-        ("Two-stage (DeepSeek-V3, GLM, LongCat)", [8, 32, 128], C_BLUE, "o"),
+        ("Coarse (DeepSeek-V3, GLM, LongCat)", [8, 32, 128], C_BLUE, "o"),
         ("Llama-3 six-stage", [8, 16, 32, 64, 96, 128], C_ORANGE, "s"),
-        ("Qwen2.5-Turbo progressive", [32, 64, 131, 262], C_GREEN, "^"),
+        ("Qwen-2.5-Turbo progressive", [32, 64, 131, 262], C_GREEN, "^"),
     ]
 
     for label, lengths, color, marker in schedules:
         xs = np.arange(len(lengths))
-        ax.step(xs, lengths, where="post", color=color, linewidth=2,
-                marker=marker, markersize=7, label=label, alpha=0.9)
+        ax.plot(xs, lengths, "-", color=color, linewidth=2,
+                marker=marker, markersize=8, label=label, alpha=0.9,
+                markeredgecolor="white", markeredgewidth=0.8)
 
     ax.set_yscale("log", base=2)
     ax.set_yticks([8, 16, 32, 64, 128, 256])
@@ -216,9 +217,126 @@ def fig2_staged_extension():
 
 
 # ==============================================================
-# Figure 4: Length Extrapolation -- RoPE base & method family
+# Figure 4: RoPE Frequency Mechanics
 # ==============================================================
-def fig4_extrapolation():
+def fig4_rope_mechanics():
+    fig, (axL, axR) = plt.subplots(1, 2, figsize=(11, 4.8),
+                                   gridspec_kw={"width_ratios": [1.25, 1]})
+
+    # -- Left: high vs low frequency rotation across position --
+    trained = 8.0          # trained length boundary (arbitrary units)
+    pos = np.linspace(0, 12, 600)
+
+    w_hi = 2.6             # high-frequency angular rate
+    w_lo = 0.42           # low-frequency angular rate
+    w_abf = 0.27          # low frequency after raising the base (ABF)
+
+    # high-frequency pair: many cycles within the trained window (local)
+    hi = np.cos(pos * w_hi)
+    # low-frequency pair: barely a fraction of a turn across the sequence (global)
+    lo = np.cos(pos * w_lo)
+    # low-frequency after raising the base (ABF): even slower
+    lo_abf = np.cos(pos * w_abf)
+
+    hi_off, lo_off = 3.4, 0.6
+
+    # shade one period of each wave to make the period contrast explicit
+    p_hi = 2 * np.pi / w_hi          # short high-freq period (~2.42)
+    p_lo = 2 * np.pi / w_lo          # long low-freq period (~14.96, off-chart)
+    seg_hi = (pos >= 0) & (pos <= p_hi)
+    axL.fill_between(pos[seg_hi], hi_off - 1.0, hi[seg_hi] + hi_off,
+                     color=C_BLUE, alpha=0.15, zorder=1)
+    axL.annotate("", xy=(p_hi, hi_off - 1.25), xytext=(0, hi_off - 1.25),
+                 arrowprops=dict(arrowstyle="<->", color=C_BLUE, lw=1.2))
+    axL.text(p_hi / 2, hi_off - 1.65, "1 period (short)", ha="center",
+             fontsize=7, color=C_BLUE)
+    # low-freq: one period runs off the chart, so shade what's visible
+    axL.fill_between(pos, lo_off - 1.0, lo + lo_off,
+                     color=C_ORANGE, alpha=0.12, zorder=1)
+    axL.annotate("", xy=(12, lo_off - 1.25), xytext=(0, lo_off - 1.25),
+                 arrowprops=dict(arrowstyle="->", color=C_ORANGE, lw=1.2))
+    axL.text(6.0, lo_off - 1.65,
+             f"1 period ~ {p_lo:.0f} (longer than the sequence)", ha="center",
+             fontsize=7, color=C_ORANGE)
+
+    axL.plot(pos, hi + hi_off, color=C_BLUE, linewidth=1.6,
+             label="high freq -> local offsets")
+    axL.plot(pos, lo + lo_off, color=C_ORANGE, linewidth=1.8,
+             label="low freq -> long-range position")
+    axL.plot(pos, lo_abf + lo_off, color=C_GREEN, linewidth=1.8, linestyle="--",
+             label="low freq after ABF (slower)")
+
+    # trained-length boundary + unseen region
+    axL.axvspan(trained, 12, color="#F5F5F5", zorder=0)
+    axL.axvline(trained, color=C_GRAY, linewidth=1.0, linestyle=":")
+    axL.text(trained - 0.15, 4.9, "trained length", ha="right", fontsize=8,
+             color="#888888", fontstyle="italic")
+    axL.text((trained + 12) / 2, 4.9, "extrapolation\n(unseen angles)", ha="center",
+             fontsize=8, color=C_RED, fontstyle="italic")
+
+    axL.set_xlim(0, 12)
+    axL.set_ylim(-2.3, 5.4)
+    axL.set_yticks([])
+    axL.set_xlabel("token position", fontsize=9.5)
+    axL.spines["left"].set_visible(False)
+    axL.legend(loc="lower right", fontsize=7.5, frameon=False, ncols=1)
+    axL.set_title("Each dimension pair rotates at its own rate",
+                  fontsize=10.5, fontweight="bold")
+
+    # -- Right: ABF maps the same distance to a smaller angle --
+    axR.axis("off")
+    axR.set_xlim(0, 10)
+    axR.set_ylim(0, 10)
+    axR.text(5.0, 9.4, "Why raising the base helps", ha="center",
+             fontsize=10.5, fontweight="bold", color=C_DARK)
+
+    from matplotlib.patches import Wedge
+
+    def clock(cx, cy, r, angle_deg, seen_deg, color, label, sub, wraps):
+        # shaded "seen during training" arc (0 .. seen_deg)
+        axR.add_patch(Wedge((cx, cy), r, 0, seen_deg, facecolor=C_LIGHT_GREEN,
+                            edgecolor="none", alpha=0.7, zorder=0))
+        circ = plt.Circle((cx, cy), r, fill=False, edgecolor=C_GRAY, linewidth=1.2)
+        axR.add_patch(circ)
+        # boundary of the seen range
+        sb = np.deg2rad(seen_deg)
+        axR.plot([cx, cx + r * np.cos(sb)], [cy, cy + r * np.sin(sb)],
+                 color=C_GREEN, linewidth=1.0, linestyle=":")
+        # the far-token rotation vector
+        a = np.deg2rad(angle_deg)
+        axR.annotate("", xy=(cx + r * np.cos(a), cy + r * np.sin(a)),
+                     xytext=(cx, cy),
+                     arrowprops=dict(arrowstyle="-|>", color=color, lw=2.2))
+        tag = "lands OUTSIDE seen" if wraps else "lands inside seen"
+        axR.text(cx, cy + r + 0.35, tag, ha="center", fontsize=6.8,
+                 color=color, fontweight="bold")
+        axR.text(cx, cy - r - 0.5, label, ha="center", fontsize=8.5,
+                 fontweight="bold", color=color)
+        axR.text(cx, cy - r - 1.0, sub, ha="center", fontsize=7,
+                 color="#888888", fontstyle="italic")
+
+    # green wedge = angles seen during training; same far token, two bases
+    clock(2.7, 5.9, 1.25, 150, 95, C_RED, "small base",
+          "far token -> large angle", wraps=True)
+    clock(7.3, 5.9, 1.25, 40, 95, C_GREEN, "large base (ABF)",
+          "same token -> small angle", wraps=False)
+    axR.annotate("", xy=(5.75, 5.9), xytext=(4.25, 5.9),
+                 arrowprops=dict(arrowstyle="-|>", color=C_DARK, lw=1.5))
+    axR.text(5.0, 6.35, "raise base", ha="center", fontsize=7.5, color=C_DARK)
+
+    axR.text(5.0, 2.7, "bigger base -> slower rotation ->\nlonger period -> more reach",
+             ha="center", fontsize=8.5, color=C_DARK, fontstyle="italic")
+    axR.text(5.0, 1.4, "base -> infinity  =>  angle -> 0  =>  NoPE",
+             ha="center", fontsize=8, color=C_PURPLE, fontweight="bold")
+
+    fig.suptitle("RoPE Frequency Mechanics", fontsize=14, fontweight="bold", y=1.0)
+    save(fig, "fig4_rope_mechanics")
+
+
+# ==============================================================
+# Figure 5: Length Extrapolation -- RoPE base & method family
+# ==============================================================
+def fig5_extrapolation():
     fig, (axL, axR) = plt.subplots(1, 2, figsize=(11, 4.8),
                                    gridspec_kw={"width_ratios": [1.1, 1]})
 
@@ -270,89 +388,117 @@ def fig4_extrapolation():
 
     fig.suptitle("Length Extrapolation: Cheating the Length Tax",
                  fontsize=14, fontweight="bold", y=1.0)
-    save(fig, "fig4_extrapolation")
+    save(fig, "fig5_extrapolation")
 
 
 # ==============================================================
 # Figure 5: Context Parallelism for Training
 # ==============================================================
-def fig5_context_parallelism():
-    fig, (axL, axR) = plt.subplots(1, 2, figsize=(11, 4.8))
+# ==============================================================
+# Figure 6: Context Parallelism for Training
+# ==============================================================
+def fig6_context_parallelism():
+    fig, (axL, axM, axR) = plt.subplots(1, 3, figsize=(13.5, 4.6))
 
     # -- Left: sequence sharded across CP ranks --
     axL.axis("off")
     axL.set_xlim(0, 10)
     axL.set_ylim(0, 10)
     axL.text(5.0, 9.5, "Sequence Sharded Across CP Ranks", ha="center",
-             fontsize=10.5, fontweight="bold", color=C_DARK)
+             fontsize=10, fontweight="bold", color=C_DARK)
 
     n = 4
-    cw = 2.0
+    cw = 2.3
     for i in range(n):
-        x = 0.5 + i * (cw + 0.1)
-        rect = FancyBboxPatch((x, 5.5), cw, 1.6, boxstyle="round,pad=0.04",
+        x = 0.3 + i * (cw + 0.05)
+        rect = FancyBboxPatch((x, 5.8), cw, 1.6, boxstyle="round,pad=0.04",
                               facecolor=C_LIGHT_BLUE, edgecolor=C_BLUE, linewidth=1.3)
         axL.add_patch(rect)
-        axL.text(x + cw / 2, 6.3, f"GPU {i}", ha="center", va="center",
-                 fontsize=9, fontweight="bold", color=C_BLUE)
-        axL.text(x + cw / 2, 5.85, f"tokens [{i*256}K:{(i+1)*256}K]", ha="center",
+        axL.text(x + cw / 2, 6.6, f"GPU {i}", ha="center", va="center",
+                 fontsize=8.5, fontweight="bold", color=C_BLUE)
+        axL.text(x + cw / 2, 6.15, f"[{i*256}K:{(i+1)*256}K]", ha="center",
                  va="center", fontsize=6.5, color="#666666", fontstyle="italic")
 
-    axL.text(5.0, 4.6, "1M sequence  /  CP degree 4", ha="center", fontsize=8.5,
+    axL.text(5.0, 4.9, "1M sequence  /  CP degree 4", ha="center", fontsize=8.5,
              color="#888888", fontstyle="italic")
-    axL.text(5.0, 3.6, "KV exchanged across ranks", ha="center", fontsize=9,
+    axL.text(5.0, 3.9, "KV exchanged across ranks", ha="center", fontsize=9,
              fontweight="bold", color=C_DARK)
-    axL.text(5.0, 3.0, "CP degree grows 16x / 32x with length",
-             ha="center", fontsize=8, color=C_RED, fontstyle="italic")
-    axL.text(5.0, 1.8, "+ doc masking / varlen packing\n+ activation checkpointing",
+    axL.text(5.0, 3.3, "CP degree grows 16x / 32x with length",
+             ha="center", fontsize=7.5, color=C_RED, fontstyle="italic")
+    axL.text(5.0, 2.1, "+ doc masking / varlen packing\n+ activation checkpointing",
              ha="center", fontsize=8, color="#666666")
 
-    # -- Right: causal load imbalance & zigzag fix --
-    axR.axis("off")
-    axR.set_xlim(0, 10)
-    axR.set_ylim(0, 10)
-    axR.text(5.0, 9.5, "Causal Load Balancing", ha="center",
-             fontsize=10.5, fontweight="bold", color=C_DARK)
+    # -- Middle: causal load imbalance & zigzag fix --
+    axM.axis("off")
+    axM.set_xlim(0, 10)
+    axM.set_ylim(0, 10)
+    axM.text(5.0, 9.5, "Causal Load Balancing", ha="center",
+             fontsize=10, fontweight="bold", color=C_DARK)
 
     # Naive: triangular workload (early ranks light, late ranks heavy)
-    axR.text(2.5, 8.5, "naive split", ha="center", fontsize=8.5,
+    axM.text(2.5, 8.5, "naive split", ha="center", fontsize=8.5,
              fontweight="bold", color=C_RED)
     loads_naive = [1, 2, 3, 4]
     for i, L in enumerate(loads_naive):
         h = 0.45 * L
         rect = FancyBboxPatch((0.7 + i * 1.0, 5.5), 0.8, h, boxstyle="round,pad=0.02",
                               facecolor=C_LIGHT_RED, edgecolor=C_RED, linewidth=1)
-        axR.add_patch(rect)
-    axR.text(2.5, 4.9, "imbalanced", ha="center", fontsize=7.5,
+        axM.add_patch(rect)
+    axM.text(2.5, 4.9, "imbalanced", ha="center", fontsize=7.5,
              color=C_RED, fontstyle="italic")
 
     # Zigzag: balanced workload
-    axR.text(7.5, 8.5, "zigzag / striped", ha="center", fontsize=8.5,
+    axM.text(7.5, 8.5, "zigzag / striped", ha="center", fontsize=8.5,
              fontweight="bold", color=C_GREEN)
     for i in range(4):
         h = 0.45 * 2.5
         rect = FancyBboxPatch((5.7 + i * 1.0, 5.5), 0.8, h, boxstyle="round,pad=0.02",
                               facecolor=C_LIGHT_GREEN, edgecolor=C_GREEN, linewidth=1)
-        axR.add_patch(rect)
-    axR.text(7.5, 4.9, "balanced", ha="center", fontsize=7.5,
+        axM.add_patch(rect)
+    axM.text(7.5, 4.9, "balanced", ha="center", fontsize=7.5,
              color=C_GREEN, fontstyle="italic")
 
-    axR.text(5.0, 3.4, "Causal masking makes late tokens attend to more keys.",
+    axM.text(5.0, 3.6, "Causal masking makes late\ntokens attend to more keys.",
              ha="center", fontsize=8, color="#666666", fontstyle="italic")
-    axR.text(5.0, 2.6, "Zigzag assignment evens the per-rank work.",
+    axM.text(5.0, 2.2, "see: Striped Attention,\nring-flash-attention (zigzag)",
+             ha="center", fontsize=7.5, color=C_PURPLE, fontweight="bold")
+
+    # -- Right: the sparse-attention twist --
+    axR.axis("off")
+    axR.set_xlim(0, 10)
+    axR.set_ylim(0, 10)
+    axR.text(5.0, 9.5, "The Sparse-Attention Twist", ha="center",
+             fontsize=10, fontweight="bold", color=C_DARK)
+
+    # Data-dependent attended set: irregular per-rank loads
+    axR.text(5.0, 8.5, "attended set is data-dependent", ha="center",
+             fontsize=8, color=C_ORANGE, fontstyle="italic")
+    loads_sparse = [2.0, 3.4, 1.4, 2.8]
+    for i, L in enumerate(loads_sparse):
+        h = 0.45 * L
+        rect = FancyBboxPatch((1.2 + i * 1.0, 5.5), 0.8, h, boxstyle="round,pad=0.02",
+                              facecolor=C_LIGHT_ORANGE, edgecolor=C_ORANGE, linewidth=1)
+        axR.add_patch(rect)
+    axR.text(5.0, 4.9, "fixed zigzag no longer balances", ha="center", fontsize=7.5,
+             color=C_RED, fontstyle="italic")
+
+    axR.text(5.0, 3.7, "CSA + HCA layers have different\ncache lifecycles.",
              ha="center", fontsize=8, color="#666666", fontstyle="italic")
-    axR.text(5.0, 1.5, "see: Striped Attention",
-             ha="center", fontsize=8, color=C_PURPLE, fontweight="bold")
+    axR.text(5.0, 2.2, "DeepSeek-V4: two-stage CP\ntailored to compressed attention",
+             ha="center", fontsize=7.5, color=C_PURPLE, fontweight="bold")
 
     fig.suptitle("Context Parallelism: The Systems Tax",
                  fontsize=14, fontweight="bold", y=1.0)
-    save(fig, "fig5_context_parallelism")
+    save(fig, "fig6_context_parallelism")
 
 
 # ==============================================================
 # Figure 6: The Reference Recipe -- summary card
 # ==============================================================
-def fig6_reference_recipe():
+# ==============================================================
+# Figure 7: The Reference Recipe -- summary card
+# ==============================================================
+def fig7_reference_recipe():
     fig, ax = plt.subplots(figsize=(10, 5.8))
     ax.set_xlim(0, 10)
     ax.set_ylim(0, 10)
@@ -386,7 +532,7 @@ def fig6_reference_recipe():
 
     ax.set_title("The Reference Long-Context Recipe", fontsize=14,
                  fontweight="bold", pad=12)
-    save(fig, "fig6_reference_recipe")
+    save(fig, "fig7_reference_recipe")
 
 
 # ==============================================================
@@ -397,7 +543,8 @@ if __name__ == "__main__":
     fig1_pipeline_placement()
     fig2_staged_extension()
     fig3_data_composition()
-    fig4_extrapolation()
-    fig5_context_parallelism()
-    fig6_reference_recipe()
+    fig4_rope_mechanics()
+    fig5_extrapolation()
+    fig6_context_parallelism()
+    fig7_reference_recipe()
     print("Done!")
